@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg3oaj6ajp8qi"]
+
+[ext_resource type="Script" uid="uid://dkqf10mlj5cpi" path="res://audio.gd" id="1_fl23b"]
+[ext_resource type="AudioStream" uid="uid://c0duf7gkoh57l" path="res://audio/klankbeeld__room-tone-apartment-suburban.wav" id="1_tnc37"]
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_fl23b")
+
+[node name="BG noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_tnc37")
+autoplay = true

@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://bimmtrhewuvlm"]
+
+[ext_resource type="Script" uid="uid://up06ia51m0sf" path="res://death.gd" id="1_qemge"]
+[ext_resource type="Texture2D" uid="uid://dyxtsstpsxw5c" path="res://art/Russian Roulette BG.png" id="2_531me"]
+[ext_resource type="AudioStream" uid="uid://jw6qeeyfivpf" path="res://audio/weapon_revolver_shots_stereo_trimmed.wav" id="2_4868a"]
+[ext_resource type="Texture2D" uid="uid://44xkqk6ew1jo" path="res://art/shoot0004.png" id="3_4868a"]
+
+[node name="Death" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qemge")
+
+[node name="thug" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="thug"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14409083, 1.015258e-07, 2.1057204e-08, 1)
+
+[node name="Label" type="Label" parent="thug"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -73.0
+offset_right = 67.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "dead"
+
+[node name="Button" type="Button" parent="thug"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 45.0
+offset_right = 26.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "retry?
+"
+
+[node name="Gun shot" type="AudioStreamPlayer2D" parent="thug"]
+position = Vector2(1, 0)
+stream = ExtResource("2_4868a")
+
+[node name="dude" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="dude"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_531me")
+
+[node name="dude" type="TextureRect" parent="dude"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_4868a")
+
+[node name="Button2" type="Button" parent="dude"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 45.0
+offset_right = 26.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "retry?
+"
+
+[connection signal="pressed" from="thug/Button" to="." method="_on_pressed"]
+[connection signal="pressed" from="dude/Button2" to="." method="_on_pressed"]
