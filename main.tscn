@@ -1,0 +1,182 @@
+[gd_scene load_steps=15 format=3 uid="uid://b40n517ygojsm"]
+
+[ext_resource type="Script" uid="uid://oy0580ukn6tk" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dyxtsstpsxw5c" path="res://art/Russian Roulette BG.png" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://ctktmyyqk2d3a" path="res://gun.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://x7rpn7nedt42" path="res://art/shoot0000.png" id="4_dg77c"]
+[ext_resource type="Texture2D" uid="uid://cj81tddal8yqr" path="res://art/shoot0001.png" id="5_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://dv8nusi2assh6" path="res://art/shoot0002.png" id="6_w48qg"]
+[ext_resource type="Texture2D" uid="uid://dda2qnduwo3f3" path="res://art/shoot0003.png" id="7_vivmo"]
+[ext_resource type="Texture2D" uid="uid://44xkqk6ew1jo" path="res://art/shoot0004.png" id="8_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://rutd51ucng6h" path="res://art/frame0003.png" id="9_yaehf"]
+[ext_resource type="Texture2D" uid="uid://b3w7qorw0g3qs" path="res://art/frame0002.png" id="10_074og"]
+[ext_resource type="Texture2D" uid="uid://bmkwd7x6cby7y" path="res://art/frame0001.png" id="11_cegan"]
+[ext_resource type="Texture2D" uid="uid://b4ag0msg5ucnb" path="res://art/frame0000.png" id="12_82xsv"]
+[ext_resource type="AudioStream" uid="uid://jw6qeeyfivpf" path="res://audio/weapon_revolver_shots_stereo_trimmed.wav" id="13_7xil3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_getpj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dg77c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ycdy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w48qg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vivmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2cqfq")
+}],
+"loop": false,
+"name": &"Shoot_dead",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_82xsv")
+}],
+"loop": true,
+"name": &"on_dude",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_yaehf")
+}],
+"loop": true,
+"name": &"on_thug",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_yaehf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_074og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cegan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_82xsv")
+}],
+"loop": false,
+"name": &"to_Dude",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_82xsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cegan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_074og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yaehf")
+}],
+"loop": false,
+"name": &"to_Thug",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_82xsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cegan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_82xsv")
+}],
+"loop": false,
+"name": &"trigger_due",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_yaehf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_074og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yaehf")
+}],
+"loop": false,
+"name": &"trigger_thug",
+"speed": 3.0
+}]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0xm2m")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 652.0
+texture = ExtResource("2_1bvp3")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="animation" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(961, 542)
+sprite_frames = SubResource("SpriteFrames_getpj")
+animation = &"Shoot_dead"
+frame = 4
+frame_progress = 1.0
+
+[node name="Dude" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = -112.0
+offset_right = 514.0
+offset_bottom = 367.0
+grow_vertical = 2
+
+[node name="Thug" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1273.0
+offset_top = -412.0
+offset_bottom = 542.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Gun" parent="." instance=ExtResource("3_h2yge")]
+layout_mode = 1
+
+[node name="Gun shot" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1, 0)
+stream = ExtResource("13_7xil3")
+
+[connection signal="focus_entered" from="Dude" to="." method="_on_dude"]
+[connection signal="focus_exited" from="Dude" to="." method="_dude_exited"]
+[connection signal="pressed" from="Dude" to="." method="shoot_dude"]
+[connection signal="pressed" from="Thug" to="." method="shoot_thug"]
