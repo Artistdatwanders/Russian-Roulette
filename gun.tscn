@@ -1,0 +1,198 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctktmyyqk2d3a"]
+
+[ext_resource type="Script" uid="uid://dojsctvapsh72" path="res://gun.gd" id="1_dk5gl"]
+[ext_resource type="Texture2D" uid="uid://bqbrn71p8oho8" path="res://art/Russian Roulette barrel.png" id="2_8iju2"]
+[ext_resource type="Texture2D" uid="uid://t7ri44lp0k3x" path="res://art/Russian Roulette hover slot.png" id="3_8iju2"]
+[ext_resource type="AudioStream" uid="uid://dfyq0e1ay8rjv" path="res://audio/luannwepener__revolver-miss-fire.wav" id="4_vwj7t"]
+
+[sub_resource type="Animation" id="Animation_7vd5q"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barrel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(705, 285)]
+}
+
+[sub_resource type="Animation" id="Animation_8iju2"]
+resource_name = "slideOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barrel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.93333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(705, 285), Vector2(2052.9998, -83)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pr6yj"]
+_data = {
+&"RESET": SubResource("Animation_7vd5q"),
+&"slideOut": SubResource("Animation_8iju2")
+}
+
+[node name="Gun" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dk5gl")
+
+[node name="barrel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -255.0
+offset_right = 383.0005
+offset_bottom = 379.00024
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_8iju2")
+
+[node name="buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot1" type="TextureButton" parent="buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.99994
+offset_top = -241.99997
+offset_right = 102.0
+offset_bottom = -62.99997
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+focus_neighbor_left = NodePath("../Slot3")
+focus_neighbor_right = NodePath("../Slot2")
+texture_focused = ExtResource("3_8iju2")
+
+[node name="Slot2" type="TextureButton" parent="buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 79.0
+offset_top = -160.99997
+offset_right = 253.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+focus_neighbor_left = NodePath("../Slot1")
+focus_neighbor_right = NodePath("../Slot4")
+texture_focused = ExtResource("3_8iju2")
+
+[node name="Slot3" type="TextureButton" parent="buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.99994
+offset_top = -160.99997
+offset_right = -45.99994
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+focus_neighbor_left = NodePath("../Slot5")
+focus_neighbor_right = NodePath("../Slot1")
+texture_focused = ExtResource("3_8iju2")
+
+[node name="Slot4" type="TextureButton" parent="buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 76.00012
+offset_top = 10.000061
+offset_right = 250.00012
+offset_bottom = 189.00006
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+focus_neighbor_left = NodePath("../Slot2")
+focus_neighbor_right = NodePath("../Slot6")
+texture_focused = ExtResource("3_8iju2")
+
+[node name="Slot5" type="TextureButton" parent="buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.99994
+offset_top = 10.0
+offset_right = -45.99994
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+focus_neighbor_left = NodePath("../Slot6")
+focus_neighbor_right = NodePath("../Slot3")
+texture_focused = ExtResource("3_8iju2")
+
+[node name="Slot6" type="TextureButton" parent="buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.99994
+offset_top = 95.00006
+offset_right = 102.0
+offset_bottom = 274.00006
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+focus_neighbor_left = NodePath("../Slot4")
+focus_neighbor_right = NodePath("../Slot5")
+texture_focused = ExtResource("3_8iju2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_motion_local = true
+libraries = {
+&"": SubResource("AnimationLibrary_pr6yj")
+}
+
+[node name="Gun Miss" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vwj7t")
+
+[connection signal="pressed" from="buttons/Slot1" to="." method="_on_pressed"]
+[connection signal="pressed" from="buttons/Slot2" to="." method="_on_pressed"]
+[connection signal="pressed" from="buttons/Slot3" to="." method="_on_pressed"]
+[connection signal="pressed" from="buttons/Slot4" to="." method="_on_pressed"]
+[connection signal="pressed" from="buttons/Slot5" to="." method="_on_pressed"]
+[connection signal="pressed" from="buttons/Slot6" to="." method="_on_pressed"]
